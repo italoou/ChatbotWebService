@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.ufrn.chatbot.dto.ChatbotDTO;
+import br.ufrn.chatbot.dto.ResponseDTO;
 import br.ufrn.chatbot.services.ChatbotService;
 
 @RestController
@@ -19,9 +20,9 @@ public class ChatbotController {
 
 	
 	@PostMapping
-	public ResponseEntity<String> sendQuestionToBot(@RequestBody ChatbotDTO dto){
+	public ResponseEntity<ResponseDTO> sendQuestionToBot(@RequestBody ChatbotDTO dto){
 		
-		return ResponseEntity.ok().body(service.sendQuestionToBot(dto.question()));
+		return ResponseEntity.ok().body(new ResponseDTO(service.sendQuestionToBot(dto.question())));
 
 	}
 		
